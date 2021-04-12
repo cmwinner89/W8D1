@@ -1,0 +1,14 @@
+<h1>User Show Page</h1>
+<h3><%=@user.username%> 's subs</h3>
+    <ul>
+        <% @user.subs.each do |sub|%>
+            <li><%= sub%></li>        
+        <% end %>
+    </ul>
+
+<h3><%=@user.username%> 's posts</h3>
+    <ul>
+        <% @user.posts.each do |post|%>
+            <li><%= post%></li>        
+        <% end %>
+    </ul>
