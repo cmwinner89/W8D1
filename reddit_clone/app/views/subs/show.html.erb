@@ -11,5 +11,12 @@
     <a href="<%= new_post_url %>">Make New Post!</a>
     <br>
     <br>
+    <ul>
+        <% @sub.posts.each do |post|%>
+            <li><a href="<%= post_url(post)%>"><%=post.title%></a></li>
+        <% end %>
+    </ul>
+    <br>
+    <br>
     <a href="<%= edit_sub_url(@sub) %>">Edit Sub!</a>
 </div>

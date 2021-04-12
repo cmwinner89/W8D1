@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+    before_action :require_logged_in, only: [:create, :new]
+
     def new
         @post = Post.new
         render :new
@@ -24,10 +26,14 @@ class PostsController < ApplicationController
     def update
         @post = Post.find(params[:id])
 
-        if @post.update_attributes(post_params)
-            redirect_to post_url(@post)
+        if logged_in?
+            if @post.update_attributes(post_params)
+                redirect_to post_url(@post)
+            else
+                render :edit
+            end
         else
-            render :edit
+            redirect_to sub_url(@post.sub)
         end
     end
 
